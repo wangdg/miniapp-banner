@@ -1,4 +1,4 @@
 <!--index.wxml-->
 <view class="container">
-  <pretty-banner></pretty-banner>
+  <banner-alpha />
 </view>
