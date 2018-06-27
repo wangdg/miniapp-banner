@@ -1,0 +1,5 @@
+<view class="container">
+  <block wx:for="{{items}}">
+    
+  </block>
+</view>

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "pretty-banner": "/components/banner-alpha/banner-alpha"
+  }
+}

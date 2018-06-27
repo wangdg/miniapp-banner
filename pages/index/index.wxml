@@ -1,0 +1,4 @@
+<!--index.wxml-->
+<view class="container">
+  <pretty-banner></pretty-banner>
+</view>
