@@ -22,4 +22,9 @@ Page({
   onLoad: function () {
     
   },
+  selectAlpha: function () {
+    wx.navigateTo({
+      url: '/pages/alpha/alpha',
+    });
+  },
 })

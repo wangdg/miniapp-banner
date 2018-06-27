@@ -1,4 +1,4 @@
 <!--index.wxml-->
 <view class="container">
-  <banner-alpha />
+  <button bindtap="selectAlpha">Banner Alpha</button>
 </view>

@@ -1,6 +1,46 @@
 
 .container {
-  width: 750rpx;
-  height: 750rpx;
   background-color: greenyellow;
+  overflow: hidden;
+  position: relative;
+  left: 0rpx;
+  top: 0rpx;
+}
+
+.image-container {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx;
+}
+
+.banner-image {
+  position: absolute;
+}
+
+.tap-container {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx;
+}
+
+.tap-left {
+  position: absolute;
+  width: 20%;
+  height: 100%;
+  left: 0rpx;
+  top: 0rpx;
+}
+
+.tap-right {
+  position: absolute;
+  width: 20%;
+  height: 100%;
+  right: 0rpx;
+  top: 0rpx;
 }

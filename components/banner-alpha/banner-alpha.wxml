@@ -1,5 +1,14 @@
-<view class="container">
-  <block wx:for="{{items}}">
-    
-  </block>
+<view class="container" style="width:{{widthRpx}}rpx;height:{{heightRpx}}rpx"
+    bindtouchstart="">
+  <!-- 图片容器 -->
+  <view class="image-container">
+    <block wx:for="{{displayStats}}">
+      <image class="banner-image" src="{{item.imageUrl}}" animation="{{item.animation}}"
+          style="width:{{item.width}}rpx;height:{{item.height}}rpx;left:{{item.left}}rpx;top:{{item.top}}rpx;" />
+    </block>
+  </view>
+  <view class="tap-container">
+    <view class="tap-left" catchtap="moveLeft"></view>
+    <view class="tap-right" catchtap="moveRight"></view>
+  </view>
 </view>
