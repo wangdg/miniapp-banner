@@ -18,6 +18,7 @@
 
 .banner-image {
   position: absolute;
+  border-radius: 20rpx;
 }
 
 .tap-container {
