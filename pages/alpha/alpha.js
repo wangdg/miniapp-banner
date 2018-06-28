@@ -72,5 +72,9 @@ Page({
    */
   onShareAppMessage: function () {
   
-  }
+  },
+
+  clickBanner: function (e) {
+    console.log('click index = ' + e.detail.index);
+  },
 })

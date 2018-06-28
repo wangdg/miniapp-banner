@@ -1,4 +1,4 @@
-<view class="container" style="width:{{widthRpx}}rpx;height:{{heightRpx}}rpx" bindtouchstart="">
+<view class="container" style="width:{{widthRpx}}rpx;height:{{heightRpx}}rpx">
   <!-- 图片容器 -->
   <view class="image-container">
     <block wx:for="{{displayItems}}" wx:key="key">
@@ -6,7 +6,7 @@
           style="{{item.style}}{{item.animate ? meta.animationStyle:''}}" />
     </block>
   </view>
-  <view class="tap-container">
+  <view class="tap-container" catchtap="clickBanner">
     <view class="tap-left" catchtap="moveLeft"></view>
     <view class="tap-right" catchtap="moveRight"></view>
   </view>

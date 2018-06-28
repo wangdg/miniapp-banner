@@ -60,6 +60,22 @@ Component({
       type: Number,
       value: 20,
     },
+
+    /**
+     * 是否自动播放
+     */
+    autoPlay: {
+      type: Boolean,
+      value: false,
+    },
+
+    /**
+     * 自动播放的时间间隔
+     */
+    duration: {
+      type: Number,
+      value: 2000,
+    }
   },
 
   /**
@@ -69,6 +85,7 @@ Component({
     displayItems: [],
     currentIndex: 0,
     animating: false,
+    autoPlayInterval: null,
   },
 
   /**
@@ -255,7 +272,7 @@ Component({
      * 向右移动
      */
     moveRight: function () {
-      
+
       if (this.data.animating) return;
 
       this.data.animating = true;
@@ -294,6 +311,39 @@ Component({
       displayItem.height = position.height;
       displayItem.style = `width:${position.width}px;height:${position.height}px;left:${position.left}px;top:${position.top}px;`;
       displayItem.animate = true;
+    },
+
+    /**
+      * 更新自动播放
+      */
+    updateAutoPlay: function (autoPlay, duration) {
+
+      let autoPlayInterval = this.data.autoPlayInterval;
+      clearInterval(autoPlayInterval);
+
+      if (autoPlay) {
+        this.data.autoPlayInterval = setInterval(function () {
+          this.moveLeft();
+        }.bind(this), duration);
+      }
+    },
+
+    /**
+      * 点击Banner
+      */
+    clickBanner: function () {
+
+      if (this.data.animating) return;
+
+      let currentIndex = this.data.currentIndex;
+      let itemLength = this.data.items.length;
+      while (currentIndex < 0) {
+        currentIndex += itemLength;
+      }
+      if (currentIndex >= itemLength) {
+        currentIndex = currentIndex % itemLength;
+      }
+      this.triggerEvent('click', { index: currentIndex }, { bubbles: true });
     }
   },
 })

@@ -1,2 +1,2 @@
 
-<banner-alpha items="{{bannerItems}}" width-rpx="750" height-rpx="500" />
+<banner-alpha items="{{bannerItems}}" width-rpx="750" height-rpx="500" bind:click="clickBanner" />
