@@ -4,7 +4,8 @@
 
 实现自定义效果的Banner。效果如下：
 
-(images/effect.gif)
+
+![效果图](images/effect.gif)
 
 ## 使用代码
 
