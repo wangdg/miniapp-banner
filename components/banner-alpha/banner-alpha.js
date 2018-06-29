@@ -21,7 +21,7 @@ Component({
       type: Array,
       value: [],
       observer: function (newVal, oldVal, changedPath) {
-        this.updateMetaData();
+        this.updateMetaData(newVal);
         let displayItems = this.createDisplayItemList(newVal);
         this.setData({
           displayItems: displayItems,
@@ -75,6 +75,14 @@ Component({
     duration: {
       type: Number,
       value: 2000,
+    },
+
+    /**
+     * 是否显示indicator
+     */
+    indicator: {
+      type: Boolean,
+      value: false,
     }
   },
 
@@ -120,7 +128,7 @@ Component({
     /**
      * 计算功能数据
      */
-    updateMetaData: function () {
+    updateMetaData: function (items) {
 
       let imageSizeRatio = this.data.imageSizeRatio;
 
@@ -188,6 +196,12 @@ Component({
         height: smallImageHeight,
       };
 
+      // 指示数据
+      let indicatorArray = new Array(items.length);
+      for (let i = 0; i < items.length; i++) {
+        indicatorArray[i] = i;
+      }
+
       let animationDuration = 500;
       let timingFunction = 'ease-in';
 
@@ -199,6 +213,7 @@ Component({
         imagePositionArray: imagePositionArray,
         animationDuration: animationDuration,
         timingFunction: timingFunction,
+        indicatorArray: indicatorArray,
       };
 
       // 生成动画style
@@ -260,7 +275,9 @@ Component({
 
       setTimeout(function () {
         this.data.animating = false;
-        this.data.currentIndex = this.normalizeIndex(currentIndex + 1, this.data.items.length);
+        this.setData({
+          currentIndex: this.normalizeIndex(currentIndex + 1, this.data.items.length),
+        });
       }.bind(this), this.data.meta.animationDuration);
     },
 
@@ -291,7 +308,9 @@ Component({
 
       setTimeout(function () {
         this.data.animating = false;
-        this.data.currentIndex = this.normalizeIndex(currentIndex - 1, this.data.items.length);
+        this.setData({
+          currentIndex: this.normalizeIndex(currentIndex - 1, this.data.items.length),
+        });
       }.bind(this), this.data.meta.animationDuration);
     },
 
@@ -377,6 +396,22 @@ Component({
         this.moveLeft();
         this.updateAutoPlay();
       }
+    },
+
+    /**
+     * 点击左侧
+     */
+    clickLeft: function (e) {
+      this.moveRight();
+      this.updateAutoPlay();
+    },
+
+    /**
+     * 点击右侧
+     */
+    clickRight: function (e) {
+      this.moveLeft();
+      this.updateAutoPlay();
     },
 
     /**

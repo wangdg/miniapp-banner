@@ -1,2 +1,3 @@
 
-<banner-alpha items="{{bannerItems}}" width-rpx="750" height-rpx="500" auto-play bind:click="clickBanner" />
+<banner-alpha items="{{bannerItems}}" width-rpx="750" height-rpx="500"
+    indicator auto-play bind:click="clickBanner" />

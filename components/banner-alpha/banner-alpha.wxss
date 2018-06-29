@@ -55,9 +55,10 @@
 .indicator {
   width: 40rpx;
   height: 6rpx;
-  background-color: 
+  background-color: #ffffff;
+  margin-left: 20rpx;
 }
 
 .indicator-current {
-  
+  background-color: #000000 !important;
 }

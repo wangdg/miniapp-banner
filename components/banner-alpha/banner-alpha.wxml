@@ -8,12 +8,12 @@
     </block>
   </view>
   <view class="tap-container" bindtap="clickBanner">
-    <view class="tap-left" bindtap="moveLeft"></view>
-    <view class="tap-right" bindtap="moveRight"></view>
+    <view class="tap-left" bindtap="clickLeft"></view>
+    <view class="tap-right" bindtap="clickRight"></view>
   </view>
-  <view class="indicator-container">
-    <block wx:for="">
-      <view class="indicator" />
+  <view wx:if="{{indicator}}" class="indicator-container">
+    <block wx:for="{{meta.indicatorArray}}">
+      <view class="indicator {{currentIndex == index ? 'indicator-current' : ''}}" />
     </block>
   </view>
 </view>
