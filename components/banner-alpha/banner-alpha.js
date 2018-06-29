@@ -329,8 +329,8 @@ Component({
     },
 
     /**
-      * 点击Banner
-      */
+     * 点击Banner
+     */
     clickBanner: function () {
 
       if (this.data.animating) return;
@@ -344,6 +344,33 @@ Component({
         currentIndex = currentIndex % itemLength;
       }
       this.triggerEvent('click', { index: currentIndex }, { bubbles: true });
+    },
+
+    /**
+     * 开始点击
+     */
+    bannerTouchDown: function (e) {
+      let touch = e.changedTouches[0];
+      this.data.touchDownPoint = { x: touch.clientX, y: touch.clientY };
+    },
+
+    /**
+     * 点击结束
+     */
+    bannerTouchUp: function (e) {
+      let touch = e.changedTouches[0];
+      let point = { x: touch.clientX, y: touch.clientY };
+      let startPoint = this.data.touchDownPoint;
+      let delta = point.x - startPoint.x;
+      console.log(delta);
+      if (Math.abs(delta) <= 70) {
+        return;
+      }
+      if (delta > 0) {
+        this.moveRight();
+      } else {
+        this.moveLeft();
+      }
     }
   },
 })
