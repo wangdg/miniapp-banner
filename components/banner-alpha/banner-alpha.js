@@ -88,6 +88,10 @@ Component({
     autoPlayInterval: null,
   },
 
+  ready: function () {
+    this.updateAutoPlay();
+  },
+
   /**
    * 组件的方法列表
    */
@@ -316,10 +320,15 @@ Component({
     /**
       * 更新自动播放
       */
-    updateAutoPlay: function (autoPlay, duration) {
+    updateAutoPlay: function () {
+
+      let autoPlay = this.data.autoPlay;
+      let duration = this.data.duration;
 
       let autoPlayInterval = this.data.autoPlayInterval;
-      clearInterval(autoPlayInterval);
+      if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+      }
 
       if (autoPlay) {
         this.data.autoPlayInterval = setInterval(function () {
