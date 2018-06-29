@@ -11,4 +11,9 @@
     <view class="tap-left" bindtap="moveLeft"></view>
     <view class="tap-right" bindtap="moveRight"></view>
   </view>
+  <view class="indicator-container">
+    <block wx:for="">
+      <view class="indicator" />
+    </block>
+  </view>
 </view>

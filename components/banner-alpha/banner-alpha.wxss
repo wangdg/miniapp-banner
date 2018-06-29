@@ -45,3 +45,19 @@
   right: 0rpx;
   top: 0rpx;
 }
+
+.indicator-container {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+}
+
+.indicator {
+  width: 40rpx;
+  height: 6rpx;
+  background-color: 
+}
+
+.indicator-current {
+  
+}

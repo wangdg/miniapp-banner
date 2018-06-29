@@ -109,11 +109,7 @@ Component({
       let positionIndex = 0;
       for (let i of [-2, -1, 0, 1, 2]) {
         // 计算实际数据index
-        let realIndex = i;
-        while (realIndex < 0) {
-          realIndex = realIndex + items.length;
-        }
-        realIndex = realIndex % items.length;
+        let realIndex = this.normalizeIndex(i, items.length);
         let displayItem = this.createDisplayItem(items, realIndex, positionIndex++);
         displayItems.push(displayItem);
       }
@@ -219,11 +215,7 @@ Component({
     createDisplayItem: function (items, itemIndex, positionIndex) {
 
       // 计算实际数据index
-      let realIndex = itemIndex;
-      while (realIndex < 0) {
-        realIndex = realIndex + items.length;
-      }
-      realIndex = realIndex % items.length;
+      let realIndex = this.normalizeIndex(itemIndex, items.length);
 
       let meta = this.data.meta;
       let item = this.data.items[realIndex];
@@ -268,7 +260,7 @@ Component({
 
       setTimeout(function () {
         this.data.animating = false;
-        this.data.currentIndex = currentIndex + 1;
+        this.data.currentIndex = this.normalizeIndex(currentIndex + 1, this.data.items.length);
       }.bind(this), this.data.meta.animationDuration);
     },
 
@@ -299,7 +291,7 @@ Component({
 
       setTimeout(function () {
         this.data.animating = false;
-        this.data.currentIndex = currentIndex - 1;
+        this.data.currentIndex = this.normalizeIndex(currentIndex - 1, this.data.items.length);
       }.bind(this), this.data.meta.animationDuration);
     },
 
@@ -367,6 +359,9 @@ Component({
      * 点击结束
      */
     bannerTouchUp: function (e) {
+
+      if (this.data.animating) return;
+
       let touch = e.changedTouches[0];
       let point = { x: touch.clientX, y: touch.clientY };
       let startPoint = this.data.touchDownPoint;
@@ -377,9 +372,26 @@ Component({
       }
       if (delta > 0) {
         this.moveRight();
+        this.updateAutoPlay();
       } else {
         this.moveLeft();
+        this.updateAutoPlay();
       }
-    }
+    },
+
+    /**
+     * 规范化Index
+     */
+    normalizeIndex: function (index, count) {
+      if (count <= 0) return 0;
+      let ret = index;
+      while (ret < 0) {
+        ret += count;
+      }
+      if (ret >= count) {
+        ret = ret % count;
+      }
+      return ret;
+    },
   },
 })
