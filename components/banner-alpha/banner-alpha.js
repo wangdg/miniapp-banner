@@ -253,11 +253,12 @@ Component({
      */
     moveLeft: function () {
 
+      let displayItems = this.data.displayItems;
+      if (displayItems.length <= 0) return;
+
       if (this.data.animating) return;
 
       this.data.animating = true;
-
-      let displayItems = this.data.displayItems;
 
       // 中间按钮
       this.animateToPosition(displayItems[1], 0);
@@ -286,11 +287,12 @@ Component({
      */
     moveRight: function () {
 
+      let displayItems = this.data.displayItems;
+      if (displayItems.length <= 0) return;
+
       if (this.data.animating) return;
 
       this.data.animating = true;
-
-      let displayItems = this.data.displayItems;
 
       // 中间按钮
       this.animateToPosition(displayItems[0], 1);
@@ -340,6 +342,9 @@ Component({
       if (autoPlayInterval) {
         clearInterval(autoPlayInterval);
       }
+
+      let displayItems = this.data.displayItems;
+      if (displayItems.length <= 0) return;
 
       if (autoPlay) {
         this.data.autoPlayInterval = setInterval(function () {
