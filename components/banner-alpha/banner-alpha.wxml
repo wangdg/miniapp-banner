@@ -1,5 +1,4 @@
-<view class="container" style="width:{{widthRpx}}rpx;height:{{heightRpx}}rpx"
-    bindtouchstart="bannerTouchDown" bindtouchend="bannerTouchUp">
+<view wx:if="{{items != null && items.length > 0}}" class="container" style="width:{{widthRpx}}rpx;height:{{heightRpx}}rpx" bindtouchstart="bannerTouchDown" bindtouchend="bannerTouchUp">
   <!-- 图片容器 -->
   <view class="image-container">
     <block wx:for="{{displayItems}}" wx:key="key">

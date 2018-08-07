@@ -17,6 +17,10 @@ Component({
    */
   properties: {
 
+    /**
+     * item属性：
+     * imageUrl: 图片URL
+     */
     items: {
       type: Array,
       value: [],
