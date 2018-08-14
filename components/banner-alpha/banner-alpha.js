@@ -27,8 +27,11 @@ Component({
       observer: function (newVal, oldVal, changedPath) {
         this.updateMetaData(newVal);
         let displayItems = this.createDisplayItemList(newVal);
+        let self = this;
         this.setData({
           displayItems: displayItems,
+        }, function() {
+          self.updateAutoPlay();
         });
       }
     },
